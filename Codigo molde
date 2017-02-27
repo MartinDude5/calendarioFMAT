@@ -171,10 +171,5 @@ printf("\t=============================>CALENDARIO<=============================
 
 }//llave del main.
 
-//Este codigo corre perfectamente en Linux
-//Probado y Compilado en Ubuntu, con GCC.
-//Para su compatibilidad en Windows, solo es necesario cambiar los system ("clear"), por cls.
-
-
 //Verificado por: Gustavo Adolfo Chavarria Mercado
 //UNAN-LEON Nicaragua
