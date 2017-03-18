@@ -1,0 +1,74 @@
+#include <stdio.h>
+#include <windows.h>
+#include <stdlib.h>
+void eleccionColor();
+int main(int argc, char *argv[]) {
+	int num;
+	int salir=0;
+	
+	while(salir==0)
+	{
+		printf("Ingrese");
+		scanf("%d",&num);
+		switch(num)
+		{
+			case(1):
+				system("cls");
+				eleccionColor();
+				break;
+			
+			case(2):
+				salir=1;
+				break;
+			
+		default:
+				printf("No operación");
+				break;
+		}
+		
+	} 
+	
+	return 0;
+}
+
+
+void eleccionColor()
+{
+	char color;
+	printf ("\t ***Color de fuente***\n\n\t A = Verde claro\n\t B = Aguamarina claro\n\t C = Rojo claro\n\t D = Púrpura claro\n\t E = Amarillo claro\n\t F = Blanco brillante\n");
+	
+	printf("\nEscriba color del fondo que desea usar:\n");
+	scanf("%c", &color);
+	
+	switch(color)
+	{
+	case 'A'|'a':
+		system("color A1");
+		break;
+		
+	case 'B'|'b':
+		
+		system("color B2");
+		break;
+		
+	case 'C'|'c':
+		system("color C0");
+		break;
+	case 'D'|'d':
+		system("color D4");
+		break;
+	case 'E'|'e':
+		system("color E5");
+		break;
+		
+	case 'F'|'f':
+		system("color F6");
+		break;
+		
+	default:
+		
+		printf("No existe esa operación");
+		break;
+	}
+
+}
