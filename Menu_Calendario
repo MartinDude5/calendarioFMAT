@@ -8,22 +8,25 @@ int main(int argc, char *argv[]) {
 	
 	while(salir==0)
 	{
-		printf("Ingrese");
+		printf("1.- Cambiar el color de la pantalla\n2.- Salir\n");
+		printf("Ingrese: ");
 		scanf("%d",&num);
 		switch(num)
 		{
 			case(1):
 				system("cls");
+				fflush(stdin);/*Sirve para borrar el valor anterior, osea 1*/
 				eleccionColor();
-				break;
+			break;
 			
 			case(2):
 				salir=1;
-				break;
+			break;
 			
 		default:
-				printf("No operación");
-				break;
+			printf("No operación");
+			salir=1;
+			break;
 		}
 		
 	} 
@@ -44,31 +47,40 @@ void eleccionColor()
 	{
 	case 'A'|'a':
 		system("color A1");
+		system("cls");
 		break;
 		
 	case 'B'|'b':
 		
 		system("color B2");
+		system("cls");
 		break;
 		
 	case 'C'|'c':
 		system("color C0");
+		system("cls");
 		break;
+		
 	case 'D'|'d':
 		system("color D4");
+		system("cls");
 		break;
+		
 	case 'E'|'e':
 		system("color E5");
+		system("cls");
 		break;
 		
 	case 'F'|'f':
 		system("color F6");
+		system("cls");
 		break;
 		
 	default:
 		
-		printf("No existe esa operación");
+		system("cls");
+		printf("No existe esa operación\n");
 		break;
 	}
-
+	
 }
