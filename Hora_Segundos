@@ -1,0 +1,32 @@
+
+#include <windows.h>
+#include <time.h>
+#include <stdlib.h>
+int main(int argc, char *argv[]) {
+	
+	time_t sisTime; 
+	struct tm*sapo;
+	time(&sisTime);
+	sapo=localtime(&sisTime);
+	
+	
+	
+	system("color 2E"); // fondo Rojo, letra blanco brillante (F)
+	int h, min, seg, x;
+	h=sapo->tm_hour;
+	min=sapo->tm_min;
+	seg=sapo->tm_sec;
+	x=1000;
+	for(h;h<24;h++)
+	{
+		for(min;min<60;min++)
+		{
+			for(seg=sapo->tm_sec;seg<60;seg++)
+			{
+				printf("%02d:%02d:%02d\r",h,min,seg);
+				Sleep(x);
+			}
+		}
+	}
+	return 0;
+}
