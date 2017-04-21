@@ -1,14 +1,31 @@
 #include <stdio.h>
 #include <windows.h>
 #include <stdlib.h>
+#include <time.h>
+#include <conio.h>
+
 void eleccionColor();
+void imprimirCalendario(int dia,int mes,int anio);
 int main(int argc, char *argv[]) {
-	int num;
+	int num,dia,mes,anio;
 	int salir=0;
+	
+	time_t sisTime; 
+	struct tm*sapo;
+	time(&sisTime);
+	sapo=localtime(&sisTime);
+	
+	
+
 	
 	while(salir==0)
 	{
-		printf("1.- Cambiar el color de la pantalla\n2.- Salir\n");
+		dia=(sapo->tm_mday);
+		mes=(sapo->tm_mon);
+		anio=(sapo->tm_year)+1900;
+		
+		system("cls");
+		printf("1.-Cambiar el color de la pantalla\n2.-Mostrar fecha actual\n3.-Buscar una fecha específica\n4.-Salir\n");
 		printf("Ingrese: ");
 		scanf("%d",&num);
 		switch(num)
@@ -20,6 +37,34 @@ int main(int argc, char *argv[]) {
 			break;
 			
 			case(2):
+				
+				system("cls");
+				printf("\t=============================>CALENDARIO<=============================\n\n");//rotulo
+				printf("Hoy es: %d/%d/%d \n\n\n",dia,mes+1,anio);
+				imprimirCalendario(dia,mes,anio);
+				printf("\n\nPresione cualquier tecla");
+				getch();
+			break;
+			
+			case(3):
+				
+				system("cls");
+				printf("Ingresa el mes que deseas ver:");
+				scanf("%d",&mes);
+				while (mes>12)
+					{
+					printf("Ingrese otro valor:");
+					scanf("%d",&mes);
+					}
+				printf("Ingresa el año que deseas ver:");
+				scanf("%d",&anio);
+				imprimirCalendario(dia,mes-1,anio);
+				printf("\n\nPresione cualquier tecla");
+				getch();
+				
+			break;
+			
+			case(4):
 				salir=1;
 			break;
 			
@@ -80,7 +125,118 @@ void eleccionColor()
 		
 		system("cls");
 		printf("No existe esa operación\n");
+		printf("Presione cualquier tecla");
+		getch();
 		break;
 	}
 	
+}
+
+
+void imprimirCalendario(int dia,int mes,int anio)
+{
+	
+	int semana,moduloMes,febrero,total_mes;
+	if (anio%4==0 && (anio%100!=0 || anio%400==0))
+		febrero=29;
+	else
+		febrero=28;
+	
+	//Agrupacion de mes.
+	//Los meses se caracterizan por tener 28,29,30,31 dias...entonces hacemos una agrupacion.
+	
+	switch (mes)
+	{
+	case 3: case 5: case 8: case 10: 
+		total_mes=30; 
+		break; 
+	case 1: 
+		total_mes=febrero; 
+		break; 
+	case 0: case 2: case 4: case 6: case 7: case 9: case 11: 
+		total_mes=31; 
+		break; 
+	}
+	
+	//Asignar nombre del mes
+	//En esta parte se imprime la cabecera del calendario mes, y anio.
+	
+	switch (mes)
+	{
+	case 0:printf("\t\tENERO\t%d",anio);break;
+	case 1:printf("\t\tFEBRERO\t%d",anio);break;
+	case 2:printf("\t\tMARZO\t%d",anio);break;
+	case 3:printf("\t\tABRIL\t%d",anio);break;
+	case 4:printf("\t\tMAYO\t%d",anio);break;
+	case 5:printf("\t\tJUNIO\t%d",anio);break;
+	case 6:printf("\t\tJULIO\t%d",anio);break;
+	case 7:printf("\t\tAGOSTO\t%d",anio);break;
+	case 8:printf("\t\tSEPTIEMBRE\t%d",anio);break;
+	case 9:printf("\t\tOCTUBRE\t%d",anio);break;
+	case 10:printf("\t\tNOVIEMBRE\t%d",anio);break;
+	case 11:printf("\t\tDICIEMBRE\t%d",anio);break;
+	}
+	
+	//Modulo Mes...
+	//En wikipedia ya hay una tabla, para evitar mas calculos la voy a usar.
+	//Esto trata de sacarle el modulo 7 a los limites de cada mes, hasta llegar al mes que se cuenta.
+	
+	if (febrero==29) //ya calcule el anio bisisesto, asi que no volvere a hacerlo.
+	{
+		switch (mes)
+		{
+		case 0:moduloMes=0;break;
+		case 1:moduloMes=3;break;
+		case 2:moduloMes=4;break;
+		case 3:moduloMes=0;break;
+		case 4:moduloMes=2;break;
+		case 5:moduloMes=5;break;
+		case 6:moduloMes=0;break;
+		case 7:moduloMes=3;break;
+		case 8:moduloMes=6;break;
+		case 9:moduloMes=1;break;
+		case 10:moduloMes=4;break;
+		case 11:moduloMes=6;break;
+		}
+		
+	}else
+	{
+		switch (mes)
+		{
+		case 0:moduloMes=0;break;
+		case 1:moduloMes=3;break;
+		case 2:moduloMes=3;break;
+		case 3:moduloMes=6;break;
+		case 4:moduloMes=1;break;
+		case 5:moduloMes=4;break;
+		case 6:moduloMes=6;break;
+		case 7:moduloMes=2;break;
+		case 8:moduloMes=5;break;
+		case 9:moduloMes=0;break;
+		case 10:moduloMes=3;break;
+		case 11:moduloMes=5;break;
+		}
+	}
+	//Calculo del primer dia de la semana.
+	//Este algoritmo esta en la wikipedia, lo modificamos para que calcule el primer dia del mes
+	//En [http://es.wikipedia.org/wiki/Algoritmo_para_calcular_el_dia_de_la_semana este algoritmo]
+	//Remplacen dia por 1,(el primer dia del mes).
+	
+	semana=((anio-1)%7+ ((anio-1)/4 -(3*((anio-1)/100+1)/4))%7+moduloMes+1%7)%7;
+	
+	//Impresion de dias
+	printf("\nDo\tLu\tMar\tMier\tJue\tVier\tSab\n");
+	
+	int m,i;
+	
+	for(m=0;m<semana;m++)//dar espacios para que el primer dia calce.
+		printf("\t");
+	
+	for(i=1;i<=total_mes;i++)//imprimir dias correspondientes al mes.
+	{
+		if(i==8-semana||i==15-semana||i==22-semana||i==29-semana || i== 36-semana)
+			printf("\n%d\t",i);
+		else	
+			printf("%d\t",i);
+	}
 }
