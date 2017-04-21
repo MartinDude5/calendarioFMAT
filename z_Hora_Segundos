@@ -1,4 +1,4 @@
-
+#include <stdio.h>
 #include <windows.h>
 #include <time.h>
 #include <stdlib.h>
@@ -11,15 +11,15 @@ int main(int argc, char *argv[]) {
 	
 	
 	
-	system("color 2E"); // fondo Rojo, letra blanco brillante (F)
+	
 	int h, min, seg, x;
 	h=sapo->tm_hour;
 	min=sapo->tm_min;
 	seg=sapo->tm_sec;
 	x=1000;
-	for(h;h<24;h++)
+	for(h=sapo->tm_hour;h<24;h++)
 	{
-		for(min;min<60;min++)
+		for(min=sapo->tm_min;min<60;min++)
 		{
 			for(seg=sapo->tm_sec;seg<60;seg++)
 			{
