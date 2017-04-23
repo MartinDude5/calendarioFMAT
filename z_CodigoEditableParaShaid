@@ -6,9 +6,11 @@
 
 void eleccionColor();
 void imprimirCalendario(int dia,int mes,int anio);
-
+void salsita(int p);
 int main(int argc, char *argv[]) {
 	int num,dia,mes,anio,hr,min,seg;
+	int k;
+	
 	int salir=0;
 	
 	time_t sisTime; 
@@ -31,8 +33,8 @@ int main(int argc, char *argv[]) {
 		printf("\t=============================>CALENDARIO<=============================\n\n");//rotulo
 		
 		printf("Hoy es: %d/%d/%d \t\t Hora: %d:%d\n\n\n",dia,mes+1,anio,hr=(sapo->tm_hour),min=(sapo->tm_min));
-		
-		printf("1.-Cambiar el color de la pantalla\n2.-Mostrar fecha actual\n3.-Buscar una fecha específica\n4.-Mostrar calendario completo\n5.-Dás festivos\n6.-Salir\n");
+		printf("\n");
+		printf("1.-Cambiar el color de la pantalla\n2.-Mostrar fecha actual\n3.-Buscar una fecha específica\n4.-Mostrar calendario completo\n5.-Días festivos\n6.-Salir\n");
 		printf("Ingrese: ");
 		scanf("%d",&num);
 		switch(num)
@@ -77,26 +79,27 @@ int main(int argc, char *argv[]) {
 			case(4):
 				
 				system("cls");
-				printf("Ingrese el año que desea visualizar: ");
-				scanf("%d",&anio);
-				
-				for(mes=0;mes<=11;mes++)
-				{
-					imprimirCalendario(dia,mes,anio);
-					printf("\n\n\n");
-				}
-				getch();
-				system("cls");
+			printf("Ingrese el año que desea visualizar: ");
+			scanf("%d",&anio);
+			
+			for(mes=0;mes<=11;mes++)
+			{
+				imprimirCalendario(dia,mes,anio);
+				printf("\n\n\n");
+			}
+			getch();
+			system("cls");
 			break;
 			
 			case(5):
 				
-			/*Ingresar aquí switchsote de días festivos*/ 	
+			 salsita(k);
+				/*Ingresar aquí switchsote de días festivos*/ 	
 				
-			break;
-			
-			
-			case(6):
+				break;
+				
+				
+				case(6):
 				salir=1;
 			break;
 			
@@ -165,6 +168,140 @@ void eleccionColor()
 	
 }
 
+void salsita(int p)
+{
+
+	scanf("%d",&p);
+	switch (p)
+	{
+	case 1: 
+		printf("         Escogiste: Enero      ");
+		printf("\n") ;
+		printf("ESTOS SON LOS DIAS IMPORTANTES DE ENERO ");
+		printf("\n");
+		printf(" 1 de Enero, Año Nuevo. ");
+		printf("\n");
+		printf(" 6 de Enero, Dia de los Reyes Magos. ");
+		printf("\n");
+		printf("        Para la UADY       ");
+		printf("\n");
+		printf(" 2-3 de Enero, Dia Inhabil UADY. ");
+		break;
+	case 2:
+		printf("     Escogiste: Febrero     ");
+		printf("\n");
+		printf("ESTOS SON LOS DIAS IMPORTANTES DE FEBRERO ");
+		printf("\n");
+		printf(" 6 de Febrero, Dia de la Constitución Mexicana ");
+		printf("\n");
+		printf(" 14 de Febrero, Día de San Valentin ");
+		printf("\n");
+		printf(" 24 de Febrero, Día de la Bandera ");
+		printf("\n");
+		printf("     Para la UADY    ");
+		printf("\n");
+		printf(" 25 de Febrero, Día Inhábil UADY ");
+		printf("\n");
+		printf(" 27-28 de Febrero, Día inhábil UADY Carnaval ");
+		break;
+	case 3:
+		printf("     Escogiste: Marzo    ");
+		printf("\n");
+		printf("ESTOS SON LOS DIAS IMPORTANTES DE MARZO ");
+		printf("\n");
+		printf(" 20 de Marzo, Natalício de Benito Juarez ");
+		printf("\n");
+		printf(" 3 de Marzo, Día Inhábil UADY ");
+		break;
+	case 4:
+		printf("     Escogiste: Abril    ");
+		printf("\n");
+		printf(" ESTOS SON LOS DIAS IMPORTANTES DE ABRIL ");
+		printf("\n");
+		printf(" 13 de Abril, Jueves Santo ");
+		printf("\n");
+		printf(" 14 de Abril, Viernes Santo ");
+		printf("\n");
+		printf(" 16 de Abril, Domingo de Resurrección ");
+		printf("\n");
+		printf(" 30 de Abril, Día del Niño ");
+		printf("\n");
+		printf("     Para la UADY     ");
+		printf("\n");
+		printf(" 10-21 de Abril, Día Inhábil UADY (Vacaciones de Semana Santa) ");
+		printf("\n");
+		printf(" 25 de Abril, Día Inhábil UADY ");
+		break;
+	case 5:
+		printf("     Escogiste: Mayo     ");
+		printf("\n");
+		printf(" ESTOS SON LOS DIAS IMPORTANTES DE MAYO ");
+		printf("\n");
+		printf(" 1 de Mayo, Día del Trabajo ");
+		printf("\n");
+		printf(" 5 de Mayo, Batalla de Puebla ");
+		printf("\n");
+		printf(" 10 de Mayo, Día de Las Madres ");
+		printf("\n");
+		printf("     Para la UADY     ");
+		printf("\n");
+		printf(" 5 de Mayo, Día Inhábil UADY  ");
+		printf("\n");
+		printf(" 10 de Mayo, Día Inhábil UADY ");
+		printf("\n");
+		printf(" 15 de Mayo, Día Inhábil UADY ");
+		break;
+	case 6:
+		printf("     Escogiste: Junio     ");
+		printf("\n");
+		printf(" ESTOS SON LOS DIAS IMPORTANTES DE JUNIO ");
+		printf("\n");
+		printf(" 3er Domingo del Mes, Día del Padre ");
+		break;
+	case 7:
+		printf("     Escogiste: Julio     ");
+		printf("\n");
+		printf(" parece que no hay nada D: ");
+		break;
+	case 8:
+		printf("     Escogiste: Agosto    ");
+		printf("\n");
+		printf(" parece que no hay nada D: ");
+		break;
+	case 9:
+		printf("     Escogiste: Septiembre    ");
+		printf("\n");
+		printf(" ESTOS SON LOS DIAS IMPORTANTES DE SEPTIEMBRE ");
+		printf("\n");
+		printf(" 16 de Septiembre, Día de La Independencia ");
+		break;
+	case 10:
+		printf("     Escogiste: Octubre    ");
+		printf("\n");
+		printf(" ESTOS SON LOS DIAS IMPORTANTES DE OCTUBRE ");
+		printf("\n");
+		printf(" 2 de Octubre, Día de Los Muertos ");
+		break;
+	case 11:
+		printf("     Escogiste: Noviembre    ");
+		printf("\n");
+		printf(" ESTOS SON LOS DIAS IMPORTANTES DE NOVIEMBRE ");
+		printf("\n");
+		printf(" 20 de Noviembre, Revolución Mexicana ");
+		break;
+	case 12:
+		printf("     Escogiste: Diciembre    ");
+		printf("\n");
+		printf(" ESTOS SON LOS DIAS IMPORTANTES DE DICIEMBRE ");
+		printf("\n");
+		printf(" 12 de Diciembre, Día de La Virgen de Guadalupe ");
+		printf("\n");
+		printf(" 24 de Diciembre, Noche Buena ");
+		printf("\n");
+		printf(" 25 de Diciembre, Navidad ");
+		break;
+	}
+}
 
 void imprimirCalendario(int dia,int mes,int anio)
 {
@@ -250,6 +387,8 @@ void imprimirCalendario(int dia,int mes,int anio)
 		case 11:moduloMes=5;break;
 		}
 	}
+	
+	
 	//Calculo del primer dia de la semana.
 	//Este algoritmo esta en la wikipedia, lo modificamos para que calcule el primer dia del mes
 	//En [http://es.wikipedia.org/wiki/Algoritmo_para_calcular_el_dia_de_la_semana este algoritmo]
