@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
 		
 		printf("\t=============================>CALENDARIO<=============================\n\n");//rotulo
 		
-		printf("Hoy es: %d/%d/%d \t\t El programa incio a las %d:%d\n\n\n",dia,mes+1,anio,hr=(sapo->tm_hour),min=(sapo->tm_min));
+		printf("Hoy es: %d/%d/%d \t\t El programa incio a las %.2d:%.2d\n\n\n",dia,mes+1,anio,hr=(sapo->tm_hour),min=(sapo->tm_min));
 		printf("1.-Cambiar el color de la pantalla\n2.-Mostrar fecha actual\n3.-Buscar una fecha específica\n4.-Mostrar calendario completo\n5.-Días festivos\n6.-Salir\n");
 		printf("\n\nIngrese: ");
 		scanf("%d",&num);
