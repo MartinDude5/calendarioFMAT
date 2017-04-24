@@ -14,25 +14,25 @@ int main(int argc, char *argv[]) {
 	int salir=0;
 	
 	time_t sisTime; 
-	struct tm*sapo;
+	struct tm*tiempoLocal;
 	time(&sisTime);
-	sapo=localtime(&sisTime);
+	tiempoLocal=localtime(&sisTime);
 	
 	
 	
 	
 	while(salir==0)
 	{
-		dia=(sapo->tm_mday);
-		mes=(sapo->tm_mon);
-		anio=(sapo->tm_year)+1900;
-		hr=(sapo->tm_hour);
-		min=(sapo->tm_min);
-		seg=(sapo->tm_sec);
+		dia=(tiempoLocal->tm_mday);
+		mes=(tiempoLocal->tm_mon);
+		anio=(tiempoLocal->tm_year)+1900;
+		hr=(tiempoLocal->tm_hour);
+		min=(tiempoLocal->tm_min);
+		seg=(tiempoLocal->tm_sec);
 		
 		printf("\t=============================>CALENDARIO<=============================\n\n");//rotulo
 		
-		printf("Hoy es: %d/%d/%d \t\t El programa incio a las %.2d:%.2d\n\n\n",dia,mes+1,anio,hr=(sapo->tm_hour),min=(sapo->tm_min));
+		printf("Hoy es: %d/%d/%d \t\t El programa incio a las %.2d:%.2d\n\n\n",dia,mes+1,anio,hr=(tiempoLocal->tm_hour),min=(tiempoLocal->tm_min));
 		printf("1.-Cambiar el color de la pantalla\n2.-Mostrar fecha actual\n3.-Buscar una fecha específica\n4.-Mostrar calendario completo\n5.-Días festivos\n6.-Salir\n");
 		printf("\n\nIngrese: ");
 		scanf("%d",&num);
