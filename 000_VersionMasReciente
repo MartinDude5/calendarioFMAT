@@ -4,7 +4,7 @@
 #include <time.h>
 #include <conio.h>
 
-void eleccionColor();
+void eleccionColor(char color);
 void imprimirCalendario(int dia,int mes,int anio);
 void diasFestivos(int p);
 int seleccionModuloMes(int mes, int febrero);
@@ -48,9 +48,14 @@ int main(int argc, char *argv[]) {
 		{
 			
 			case(1)://Cambio de Color
+			char color;
 			system("cls");
 			fflush(stdin);/*Sirve para borrar el valor anterior, osea 1*/
-			eleccionColor();
+			printf ("\t ***Color de fondo***\n\n\t A = Verde claro\n\t B = Aguamarina claro\n\t C = Rojo claro\n\t D = Púrpura claro\n\t E = Amarillo claro\n\t F = Blanco brillante\n");
+			
+			printf("\nEscriba color del fondo que desea usar:\n");
+			scanf("%c", &color);
+			eleccionColor(color);
 			break;
 			
 			case(2)://Mostrar Fecha Actual
@@ -170,13 +175,8 @@ int main(int argc, char *argv[]) {
 }
 
 
-void eleccionColor()
+void eleccionColor(char color)
 {
-	char color;
-	printf ("\t ***Color de fondo***\n\n\t A = Verde claro\n\t B = Aguamarina claro\n\t C = Rojo claro\n\t D = Púrpura claro\n\t E = Amarillo claro\n\t F = Blanco brillante\n");
-	
-	printf("\nEscriba color del fondo que desea usar:\n");
-	scanf("%c", &color);
 	
 	switch(color)
 	{
