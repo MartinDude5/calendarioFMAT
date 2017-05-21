@@ -145,11 +145,15 @@ int main(int argc, char *argv[]) {
 				printf("no se puede >;v \n");
 				exit(1);
 			}
-			while(!feof(f))
+			do
 			{
 				fgets(imprimir,100,f);
-				printf("%s", imprimir);
-			}
+				if ( !feof(f) )
+				{
+					printf("%s", imprimir);
+				}
+				
+			}while(!feof(f));
 			
 			printf("\n\nPresione cualquier tecla");
 			getch();
